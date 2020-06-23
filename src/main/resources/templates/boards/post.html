@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/layout/layout1}">
+<th:block layout:fragment="head">
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+</th:block>
+
+<th:block layout:fragment="content">
+    <form method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        <textarea id="summernote" name="editordata"></textarea>
+        <button type="submit" class="btn-outline-dark">게시</button>
+    </form>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        $(document).ready(function () {
+
+            function uploadSummernoteImageFile(file, editor) {
+                var form_data = new FormData();
+                form_data.append('file', file);
+                $.ajax({
+                    data: form_data,
+                    type : "post",
+                    url: '/boards/uploadSummernoteImageFile',
+                    cache :false,
+                    contentType : false,
+                    enctype : 'multipart/form-data',
+                    processData : false,
+                    beforeSend : function(xhr) {
+                        xhr.setRequestHeader([[${_csrf.headerName}]], [[${_csrf.token}]]);
+                    },
+                    success : function(data) {
+                        $(editor).summernote('editor.insertImage', data.url);
+                    }
+                });
+            }
+
+            $('#summernote').summernote({
+                placeholder: '최대 500자 작성 가능합니다.',
+                height: 300,
+                lang: 'ko-KR',
+                callbacks: {
+                    onImageUpload: function(files) {
+                        uploadSummernoteImageFile(files[0], this);
+                    }
+                }
+            });
+        });
+    </script>
+</th:block>
+
+</html>

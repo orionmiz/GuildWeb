@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout1}">
+
+<div layout:fragment="content">
+    <form method="post" enctype="multipart/form-data">
+
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+        <div class="form-group">
+            <label>제목
+                <input class="form-control" name="title" required>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>답변받을 캐릭터 닉네임
+                <input class="form-control" name="reporter" required>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>제보할 길드원 닉네임
+                <input class="list-group form-control" name="reported" list="members" required>
+                <datalist id="members">
+                    <option value="꿍깝"></option>
+                    <option value="성재Re"></option>
+                </datalist>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>증거 스샷 <b style="color: red">※필수</b>
+                <input type="file" class="form-control-file" name="files" multiple required>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>제보 내용
+                <textarea class="form-control" name="content" required></textarea>
+            </label>
+        </div>
+
+        <button type="submit" class="btn-primary">제출</button>
+    </form>
+
+</div>
+
+</html>
