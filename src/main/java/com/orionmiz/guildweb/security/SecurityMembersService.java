@@ -20,7 +20,7 @@ public class SecurityMembersService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+    public SecurityMember loadUserByUsername(String s) throws UsernameNotFoundException {
         return repo.findById(s).map(SecurityMember::new).orElse(null);
     }
 }

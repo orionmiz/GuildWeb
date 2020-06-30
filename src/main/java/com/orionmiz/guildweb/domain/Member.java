@@ -19,6 +19,7 @@ public class Member {
     @Id
     private String username;
     private String password;
+    private boolean enabled;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "member")
