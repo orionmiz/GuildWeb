@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  /*padding: 0 20px 20px 20px;*/
+}
+
+div.card-body {
+  text-align: center;
+}
+
+.thumbnail-wrap {
+  padding: 0 20px;
+  text-decoration: none !important;
+  vertical-align: middle;
+}
+
+.thumbnail {
+  object-fit: cover; width: 290px; height: 290px;
+  background-color: white;
+  display: inline-block;
+}
+
+.thumbnail:hover {
+  filter: brightness(50%);
+}
+
+.thumbnail-simple {
+  width: 290px; height: 290px;
+  background-color: aquamarine;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: x-large;
+}
+
+.thumbnail-simple:hover {
+  filter: brightness(50%);
+}
+
+a img{
+
+}

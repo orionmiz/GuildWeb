@@ -3,7 +3,7 @@
 <div layout:fragment="content" class="container-fluid">
     <form method="post">
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-        <div th:if="${param.error != null}">로그인 실패</div>
+        <div id="errorMsg" th:if="${param.error != null}">로그인 실패</div>
         <div>
             <label for="username" style="display: inline-block; width: 100px; text-align: center;">게임 닉네임</label>
             <input type="text" id="username" name="username">
@@ -34,10 +34,28 @@
                         alert("이미 가입 신청이 되어있습니다.");
                         break;
                 }
-
                 var stateObj = { msg: "" };
 
+                var err_code = [[${param.error[0]}]];
+                var err_obj = document.getElementById("errorMsg");
+                switch (err_code) {
+                    case "1":
+                        err_obj.innerText = "비밀번호 오류";
+                        break;
+                    case "2":
+                        err_obj.innerText = "아직 인증 안됨";
+                        break;
+                    case "3":
+                        err_obj.innerText = "없는 아이디";
+                        break;
+                    case "4":
+                        err_obj.innerText = "알 수 없는 오류";
+                        break;
+                }
             });
+
+
+
         });
     </script>
 </th:block>
