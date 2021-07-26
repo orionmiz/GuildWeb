@@ -11,6 +11,8 @@
 
 A web project for the Doki guild's promotion & community
 
+Running instance of prototype : [Here](https://orionmiz.github.io/GuildWeb/)
+
 ### Features
 
 * Report (w/ File upload)
