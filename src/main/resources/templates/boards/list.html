@@ -11,7 +11,7 @@
         <th:block th:each="info, iterState : ${infos}">
             <a th:href="'view?bno=' + ${info.getBno()}" class="thumbnail-wrap">
                 <img th:if="${info.getPictures() > 0}" th:src="${info.getContent()}" class="thumbnail">
-                <span th:unless="${info.getPictures() > 0}" th:text="${info.getContent()}" class="thumbnail-simple">
+                <span th:unless="${info.getPictures() > 0}" th:text="${info.getContent().length() > 50 ? info.getContent().substring(0, 50) + '..' : info.getContent()}" class="thumbnail-simple">
                 </span>
             </a>
             <th:block th:if="${(iterState.index + 1) % 3 == 0}" th:utext="${'</div>' + '<div class=card-body>'}">
