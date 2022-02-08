@@ -1,7 +1,7 @@
-# Guildweb
+# Doki Web
 
 <p align="center">
-<a href="https://orionmiz.github.io/GuildWeb/">
+<a href="https://orionmiz.github.io/doki-spring/">
     <img src="docs/preview/doki1.jpg" alt="Preview image 1" width="32.2%">
     <img src="docs/preview/doki2.jpg" alt="Preview image 2" width="30%">
 </a>
@@ -11,7 +11,7 @@
 
 A web project for the Doki guild's promotion & community
 
-Running instance of prototype : [Here](https://orionmiz.github.io/GuildWeb/)
+Running instance of prototype : [Here](https://orionmiz.github.io/doki-spring/)
 
 ### Features
 
